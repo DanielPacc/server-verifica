@@ -33,23 +33,17 @@ public class DThread extends Thread {
                 str = indalClient.readLine();
                 System.out.println("Read " + str + ".");
                 String mess ="";
-                
-
                 mess=mess+mapper.writeValueAsString(msg.toString());
-                
-                outversoClient.writeBytes(mess + "\n");
+                System.out.println("ricevuto: " );
+                outversoClient.writeBytes(mess + ", Scrivi quanti biglietti vuoi comprare: "+ "\n");
+                str = indalClient.readLine();
+                int in=Integer.parseInt(str);
+                for(int i=0; i<in; i++){//con questo ciclo mi faccio dare dal client sia il numero dei biglietti che vuole acquistare che la rimozione di essi dall'array
 
-                /*JSONMapper prende l'oggetto JSON dalla Stringa
-                bgl = mapper.readValue(str, Biglietto.class);
+                }
 
-                // Manipolazione del messaggio
-                bgl.setInfoB(bgl.getInfoB().toUpperCase());
-
-                //Rimanda il dato indietro
-                String toSend = mapper.writeValueAsString(bgl);
-                outversoClient.writeBytes(toSend + "\n");*/
             } catch ( Exception e ) {
-                System.out.println("cazoooo");
+                System.out.println("qualcosa è andato storto");
                 break;
             }
             
